@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { userInfo } from '../redux/actions';
 import { fetchToken } from '../services/API';
 import { resetScore } from '../redux/actions/login';
+import '../styles/Login.css';
+import configBtn from '../assets/configuração.png';
+import logo from '../assets/logo trivia.png';
 
 class Login extends Component {
   state = {
@@ -47,45 +50,58 @@ class Login extends Component {
   render() {
     const { name, gravatarEmail } = this.state;
     return (
-      <div>
-        <form action="">
-          <label htmlFor="name">
-            Seu nome
-            <input
-              name="name"
-              placeholder="nome"
-              type="text"
-              data-testid="input-player-name"
-              value={ name }
-              onChange={ this.inputChange }
-            />
-          </label>
-          <label htmlFor="gravatarEmail">
-            Seu email
-            <input
-              name="gravatarEmail"
-              placeholder="email"
-              type="email"
-              data-testid="input-gravatar-email"
-              value={ gravatarEmail }
-              onChange={ this.inputChange }
-            />
-          </label>
-          <button
-            data-testid="btn-play"
-            onClick={ this.handleClick }
-            disabled={ !this.validaInput() }
+      <div
+        className="wrapper-container"
+      >
+        <img src={ logo } alt="logo" className="logo" />
+        <div
+          className="login-container"
+        >
+          <form
+            action=""
+            className="login-form"
           >
-            Play
-          </button>
-          <button
-            data-testid="btn-settings"
-            type="button"
-            onClick={ this.cfgBtn }
-          >
-            Settings
-          </button>
-        </form>
+            <label htmlFor="gravatarEmail">
+              <input
+                name="gravatarEmail"
+                placeholder="Qual é o seu e-mail do gravatar?"
+                type="email"
+                data-testid="input-gravatar-email"
+                value={ gravatarEmail }
+                onChange={ this.inputChange }
+                className="input-login"
+              />
+            </label>
+            <label htmlFor="name">
+              <input
+                name="name"
+                placeholder="Qual é o seu nome?"
+                type="text"
+                data-testid="input-player-name"
+                value={ name }
+                onChange={ this.inputChange }
+                className="input-login"
+              />
+            </label>
+            <button
+              data-testid="btn-play"
+              onClick={ this.handleClick }
+              disabled={ !this.validaInput() }
+              className="btn-play"
+            >
+              Jogar
+            </button>
+            <button
+              data-testid="btn-settings"
+              type="button"
+              onClick={ this.cfgBtn }
+              className="btn-settings"
+            >
+              <img src={ configBtn } alt="configurações" className="config-btn" />
+              Configurações
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
