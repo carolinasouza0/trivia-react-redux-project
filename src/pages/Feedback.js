@@ -26,12 +26,12 @@ class Feedback extends Component {
         <h2 data-testid="feedback-text">
           {feedbackText}
         </h2>
-        <p data-testid="feedback-total-score">
+        <h3 data-testid="feedback-total-score">
           {score}
-        </p>
-        <p data-testid="feedback-total-question">
+        </h3>
+        <h3 data-testid="feedback-total-question">
           {assertions}
-        </p>
+        </h3>
         <button
           onClick={ () => this.handleNewGame() }
           data-testid="btn-play-again"
