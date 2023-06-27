@@ -7,6 +7,7 @@ import { resetScore } from '../redux/actions/login';
 import '../styles/Login.css';
 import configBtn from '../assets/configuração.png';
 import logo from '../assets/logo trivia.png';
+import iconeTrybe from '../assets/ícone trybe.png';
 
 class Login extends Component {
   state = {
@@ -102,6 +103,9 @@ class Login extends Component {
             </button>
           </form>
         </div>
+        <footer>
+          <img src={ iconeTrybe } alt="logo trybe" className="logo-trybe" />
+        </footer>
       </div>
     );
   }
