@@ -9,7 +9,9 @@
 
 body {
   align-items: center;
-  background: #67e8f9;
+  background-image: url('./assets/background.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   font-family: ' Lato' , sans-serif;
   height: 100vh;

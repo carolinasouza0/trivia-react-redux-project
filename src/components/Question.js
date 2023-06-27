@@ -145,21 +145,16 @@ class Question extends Component {
     const { question } = this.props;
     const { areAnswersDisabled, isNextDisabled,
       countdown, redirectToFeedback } = this.state;
+
     const correctAnswer = {
       answer: question.correct_answer,
       correct: true,
     };
-    const incorrectAnswer = {
-      answer: question.incorrect_answers,
-      incorrect: true,
-    };
-    const arrayAnswers = shuffleArray([...question.incorrect_answers.map((answer) => {
-      const newAnswer = {
-        answer,
-        correct: false,
-      };
-      return newAnswer;
-    }), correctAnswer]);
+    const incorrectAnswers = question.incorrect_answers.map((answer) => ({
+      answer,
+      correct: false,
+    }));
+    const arrayAnswers = shuffleArray([...incorrectAnswers, correctAnswer]);
 
     if (redirectToFeedback) {
       return <Redirect to="/feedback" />;
@@ -190,7 +185,7 @@ class Question extends Component {
               onClick={ () => this.handleSelectAnswer(correct) }
               className={ this.handleClasses(correct) }
               data-testid={ correct ? 'correct-answer'
-                : `wrong-answer-${incorrectAnswer.indexOf}` }
+                : `wrong-answer-${incorrectAnswers.indexOf}` }
             >
 
               {answer}
